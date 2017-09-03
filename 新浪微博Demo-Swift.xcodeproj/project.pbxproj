@@ -12,6 +12,8 @@
 		32E454E51F59348E0029D7F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32E454E31F59348E0029D7F7 /* Main.storyboard */; };
 		32E454E71F59348E0029D7F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32E454E61F59348E0029D7F7 /* Assets.xcassets */; };
 		32E454EA1F59348E0029D7F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32E454E81F59348E0029D7F7 /* LaunchScreen.storyboard */; };
+		644CFD1E1F5C018900C155E3 /* SinaWeiBoWebviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644CFD1D1F5C018900C155E3 /* SinaWeiBoWebviewController.swift */; };
+		644CFD201F5C1A8D00C155E3 /* ListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644CFD1F1F5C1A8D00C155E3 /* ListsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		32E454E61F59348E0029D7F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32E454E91F59348E0029D7F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32E454EB1F59348E0029D7F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		644CFD1D1F5C018900C155E3 /* SinaWeiBoWebviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinaWeiBoWebviewController.swift; sourceTree = "<group>"; };
+		644CFD1F1F5C1A8D00C155E3 /* ListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				32E454DF1F59348E0029D7F7 /* AppDelegate.swift */,
 				32E454E11F59348E0029D7F7 /* ViewController.swift */,
+				644CFD1D1F5C018900C155E3 /* SinaWeiBoWebviewController.swift */,
+				644CFD1F1F5C1A8D00C155E3 /* ListsViewController.swift */,
 				32E454E31F59348E0029D7F7 /* Main.storyboard */,
 				32E454E61F59348E0029D7F7 /* Assets.xcassets */,
 				32E454E81F59348E0029D7F7 /* LaunchScreen.storyboard */,
@@ -96,6 +102,7 @@
 				TargetAttributes = {
 					32E454DB1F59348E0029D7F7 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = ZAB4L2B7UQ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -138,6 +145,8 @@
 			files = (
 				32E454E21F59348E0029D7F7 /* ViewController.swift in Sources */,
 				32E454E01F59348E0029D7F7 /* AppDelegate.swift in Sources */,
+				644CFD201F5C1A8D00C155E3 /* ListsViewController.swift in Sources */,
+				644CFD1E1F5C018900C155E3 /* SinaWeiBoWebviewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,7 +271,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZAB4L2B7UQ;
 				INFOPLIST_FILE = "新浪微博Demo-Swift/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mycompany.dev.----Demo-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -274,7 +285,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZAB4L2B7UQ;
 				INFOPLIST_FILE = "新浪微博Demo-Swift/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mycompany.dev.----Demo-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -301,6 +314,7 @@
 				32E454F01F59348E0029D7F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
