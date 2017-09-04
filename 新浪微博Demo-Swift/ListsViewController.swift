@@ -19,7 +19,7 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let fianlURL = "https://api.weibo.com/2/statuses/public_timeline.json?access_token=\(self.token!)"
             let finalRequest = URLRequest(url: URL(string: fianlURL)!)
             let session = URLSession(configuration: URLSessionConfiguration.default)
-            let dataTask = session.dataTask(with: finalRequest) { (data, response, error) in
+            let dataTask = session.dataTask(with: finalRequest) {[unowned self] (data, response, error) in
                 if let theData = data
                 {
                     let dic = try? JSONSerialization.jsonObject(with: theData, options: .mutableContainers) as? NSDictionary
@@ -29,8 +29,8 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         if let theStatus = statuses
                         {
                             let models = UserModel.getAllUserModels(theStatus)
+                            self.records = models
                             DispatchQueue.main.async {[unowned self] in
-                                self.records = models
                                 self.tableView.reloadData()
                                 self.loadingView.stopAnimating()
                             }

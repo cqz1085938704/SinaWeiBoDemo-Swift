@@ -111,14 +111,16 @@ static NSString *const imageFloder = @"QDIINewsIcons";
         self.image = [UIImage imageNamed:placeHolder];
     }
     
+    __weak typeof(self) weakSelf = self;
     self.session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     self.dataTask = [self.session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        __weak typeof(self) strongSelf = weakSelf;
         if (!error)
         {
-            [self saveImage:data ToPath:[self pathOfImage:imageName]];
+            [strongSelf saveImage:data ToPath:[strongSelf pathOfImage:imageName]];
             UIImage *image = [UIImage imageWithData:data];
             dispatch_async(dispatch_get_main_queue(), ^{
-                self.image = image;
+                strongSelf.image = image;
             });
         }
         if (completion)
