@@ -24,7 +24,7 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 if let theData = data
                 {
                     let dic = try! JSONSerialization.jsonObject(with: theData, options: .mutableContainers) as! NSDictionary
-                    self.tableView!.reloadData()
+                    self.tableView.reloadData()
                 }
             }
             dataTask.resume()

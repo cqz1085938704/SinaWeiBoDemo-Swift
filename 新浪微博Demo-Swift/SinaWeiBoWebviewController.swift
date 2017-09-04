@@ -8,13 +8,9 @@
 
 import UIKit
 
-let appid: String = "2223933453"
-let appsecret: String = "5e512ddeb3f083e496e83ee98f15aad9"
-let callbackuri: String = "http://www.baidu.com"
-
-//let appid: String = "1478592170"
-//let appsecret: String = "f53fb2cb26339ba279d98105664667af"
-//let callbackuri: String = "http://caiyaodemo.com"
+let appid: String = "1478592170"
+let appsecret: String = "f53fb2cb26339ba279d98105664667af"
+let callbackuri: String = "http://caiyaodemo.com"
 
 class SinaWeiBoWebviewController: UIViewController, UIWebViewDelegate
 {
