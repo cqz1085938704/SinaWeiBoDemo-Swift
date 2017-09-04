@@ -11,34 +11,60 @@ import UIKit
 let appid: String = "1478592170"
 let appsecret: String = "f53fb2cb26339ba279d98105664667af"
 let callbackuri: String = "http://caiyaodemo.com"
+let codeURL: String = "https://api.weibo.com/oauth2/authorize?client_id=\(appid)&response_type=code&redirect_uri=\(callbackuri)"
 
 class SinaWeiBoWebviewController: UIViewController, UIWebViewDelegate
 {
-
+    private lazy var loadingView: UIActivityIndicatorView =
+    {
+       var theLoading = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        theLoading.hidesWhenStopped = true
+        theLoading.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        theLoading.center = self.view.center
+        return theLoading
+    }()
+    
+    private lazy var webView: UIWebView =
+    {
+        let theWeb = UIWebView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+        theWeb.delegate = self
+        return theWeb
+    }()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.view.addSubview(self.webView)
+        self.view.addSubview(self.loadingView)
         
-        
-        
-        let url = URL(string: "https://api.weibo.com/oauth2/authorize?client_id=\(appid)&response_type=code&redirect_uri=\(callbackuri)")
-        let request = URLRequest(url: url!)
-        
-        let webview = UIWebView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
-        webview.delegate = self
-        webview.loadRequest(request as URLRequest)
-        
-        self.view.addSubview(webview)
+        startLoading()
     }
 
+    func startLoading()
+    {
+        let url = URL(string: codeURL)
+        let request = URLRequest(url: url!)
+        self.webView.loadRequest(request)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    func webViewDidStartLoad(_ webView: UIWebView)
+    {
+        self.loadingView.startAnimating()
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView)
+    {
+        self.loadingView.stopAnimating()
+    }
+    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool
+    {
         let url = request.url?.absoluteString
         if (url?.contains("code="))!
         {

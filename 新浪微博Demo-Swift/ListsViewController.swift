@@ -30,7 +30,10 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         {
                             let models = UserModel.getAllUserModels(theStatus)
                             self.records = models
-                            self.tableView.reloadData()
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                                self.loadingView.stopAnimating()
+                            }
                         }
                     }
                 }
@@ -45,6 +48,16 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         theTable.delegate = self
         theTable.dataSource = self
         return theTable
+    }()
+    
+    private lazy var loadingView: UIActivityIndicatorView =
+    {
+        let theLoading = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        theLoading.hidesWhenStopped = true
+        theLoading.startAnimating()
+        theLoading.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        theLoading.center = self.view.center
+        return theLoading
     }()
     
     private var records: NSArray? = nil
@@ -70,7 +83,8 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     {
         super.viewDidLoad()
 
-        self.view .addSubview(self.tableView)
+        self.view.addSubview(self.tableView)
+        self.view.addSubview(self.loadingView)
     }
 
     override func didReceiveMemoryWarning()
@@ -104,7 +118,7 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let model = self.records?[indexPath.row] as? UserModel
         
         cell?.textLabel?.text = model?.title
-        cell?.imageView?.setImageWithURL(model?.imageURL, placeHolder: "")
+        cell?.imageView?.setImageWithURL(model?.imageURL, placeHolder: "placeholder")
         
         return cell!
     }
