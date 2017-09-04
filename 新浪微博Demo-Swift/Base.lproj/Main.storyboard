@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1611" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j9F-nk-3s2">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j9F-nk-3s2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,20 +37,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oah-LS-XI2">
-                                <rect key="frame" x="67" y="196" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timg.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="oah-LS-XI2">
+                                <rect key="frame" x="16" y="183.5" width="343" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="aih-d4-D28"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZlS-LN-lYC">
-                                <rect key="frame" x="141" y="465" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="新浪微博登录"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZlS-LN-lYC">
+                                <rect key="frame" x="119.5" y="465" width="136" height="30"/>
+                                <color key="backgroundColor" red="0.72156862745098038" green="0.5725490196078431" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="136" id="1WD-1F-YXQ"/>
+                                </constraints>
+                                <state key="normal" title="新浪微博登录">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="loginWithSinaWeiBo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CRy-OD-MZq"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZlS-LN-lYC" firstAttribute="top" secondItem="oah-LS-XI2" secondAttribute="bottom" constant="81.5" id="JHj-LZ-ehW"/>
+                            <constraint firstItem="oah-LS-XI2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="Ydk-SG-CAX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oah-LS-XI2" secondAttribute="trailing" id="ZYd-pk-NvD"/>
+                            <constraint firstItem="oah-LS-XI2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="oOO-sT-29a"/>
+                            <constraint firstItem="ZlS-LN-lYC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rpH-fs-fm4"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CaX-Li-w3a"/>
                 </viewController>
@@ -58,4 +73,7 @@
             <point key="canvasLocation" x="-834.39999999999998" y="-123.68815592203899"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="timg.jpeg" width="500" height="375"/>
+    </resources>
 </document>

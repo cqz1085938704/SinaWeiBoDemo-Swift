@@ -119,6 +119,7 @@ static NSString *const imageFloder = @"QDIINewsIcons";
             UIImage *image = [UIImage imageWithData:data];
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.image = image;
+                [self setNeedsLayout];
             });
         }
     }];
