@@ -23,8 +23,18 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let dataTask = session.dataTask(with: finalRequest) { (data, response, error) in
                 if let theData = data
                 {
-                    let dic = try! JSONSerialization.jsonObject(with: theData, options: .mutableContainers) as! NSDictionary
-                    self.tableView.reloadData()
+                    let dic = try? JSONSerialization.jsonObject(with: theData, options: .mutableContainers) as? NSDictionary
+                    if let theDic = dic
+                    {
+                        let statuses = theDic?["statuses"] as? NSArray
+                        if let theStatus = statuses
+                        {
+                            self.records = theStatus
+                            self.tableView.reloadData()
+                        }
+                    }
+                    
+                    
                 }
             }
             dataTask.resume()
@@ -89,6 +99,9 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         {
             cell = UITableViewCell(style: .default, reuseIdentifier: cellID)
         }
+        
+        let infoDic = self.records?[indexPath.row] as? NSDictionary
+        cell?.textLabel?.text = infoDic?["text"] as? String
         
         return cell!
     }
