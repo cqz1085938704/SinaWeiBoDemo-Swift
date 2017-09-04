@@ -29,8 +29,8 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         if let theStatus = statuses
                         {
                             let models = UserModel.getAllUserModels(theStatus)
-                            self.records = models
-                            DispatchQueue.main.async {
+                            DispatchQueue.main.async {[unowned self] in
+                                self.records = models
                                 self.tableView.reloadData()
                                 self.loadingView.stopAnimating()
                             }

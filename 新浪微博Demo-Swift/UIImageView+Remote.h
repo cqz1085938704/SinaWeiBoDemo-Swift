@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^Completion)();
+
 @interface UIImageView (Remote)
 
--(void)setImageWithURL:(NSString *)urlString placeHolder:(NSString *)placeHolder;
+-(void)setImageWithURL:(NSString *)urlString placeHolder:(NSString *)placeHolder completion:(Completion)completion;
 
 @end

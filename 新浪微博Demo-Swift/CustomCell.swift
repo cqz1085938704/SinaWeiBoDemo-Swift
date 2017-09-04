@@ -15,7 +15,9 @@ class CustomCell: UITableViewCell
         didSet
         {
             textLabel?.text = userModel?.title
-            imageView?.setImageWithURL(userModel?.imageURL, placeHolder: "placeholder")
+            imageView?.setImageWithURL(userModel?.imageURL, placeHolder: "placeholder", completion: {[unowned self] in
+                self.setNeedsLayout()
+            })
         }
     }
     
