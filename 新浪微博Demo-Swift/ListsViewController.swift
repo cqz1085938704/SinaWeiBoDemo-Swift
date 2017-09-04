@@ -18,7 +18,6 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         {
             let fianlURL = "https://api.weibo.com/2/statuses/public_timeline.json?access_token=\(self.token!)"
             let finalRequest = URLRequest(url: URL(string: fianlURL)!)
-            //finalRequest.httpMethod = "POST"
             let session = URLSession(configuration: URLSessionConfiguration.default)
             let dataTask = session.dataTask(with: finalRequest) { (data, response, error) in
                 if let theData = data
@@ -29,18 +28,25 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         let statuses = theDic?["statuses"] as? NSArray
                         if let theStatus = statuses
                         {
-                            self.records = theStatus
+                            let models = UserModel.getAllUserModels(theStatus)
+                            self.records = models
                             self.tableView.reloadData()
                         }
                     }
-                    
-                    
                 }
             }
             dataTask.resume()
         }
     }
-    private var tableView: UITableView!
+    
+    private lazy var tableView: UITableView =
+    {
+        let theTable = UITableView(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:UIScreen.main.bounds.size.height), style: .plain)
+        theTable.delegate = self
+        theTable.dataSource = self
+        return theTable
+    }()
+    
     private var records: NSArray? = nil
 
     init(_ token: String)
@@ -64,12 +70,7 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        tableView = UITableView(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:UIScreen.main.bounds.size.height), style: .plain)
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        self.view .addSubview(tableView)
+        self.view .addSubview(self.tableView)
     }
 
     override func didReceiveMemoryWarning()
@@ -100,9 +101,16 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell = UITableViewCell(style: .default, reuseIdentifier: cellID)
         }
         
-        let infoDic = self.records?[indexPath.row] as? NSDictionary
-        cell?.textLabel?.text = infoDic?["text"] as? String
+        let model = self.records?[indexPath.row] as? UserModel
+        
+        cell?.textLabel?.text = model?.title
+        cell?.imageView?.setImageWithURL(model?.imageURL, placeHolder: "")
         
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 80
     }
 }
