@@ -109,17 +109,14 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellID)
+        var cell: CustomCell? = tableView.dequeueReusableCell(withIdentifier: cellID) as? CustomCell
         if cell == nil
         {
-            cell = UITableViewCell(style: .default, reuseIdentifier: cellID)
+            cell = CustomCell(style: .default, reuseIdentifier: cellID)
         }
         
         let model = self.records?[indexPath.row] as? UserModel
-        
-        cell?.textLabel?.text = model?.title
-        cell?.imageView?.setImageWithURL(model?.imageURL, placeHolder: "placeholder")
-        
+        cell?.userModel = model
         return cell!
     }
     

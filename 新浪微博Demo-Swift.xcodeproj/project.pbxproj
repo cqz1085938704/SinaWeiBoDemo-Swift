@@ -14,6 +14,8 @@
 		32E454E51F59348E0029D7F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32E454E31F59348E0029D7F7 /* Main.storyboard */; };
 		32E454E71F59348E0029D7F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32E454E61F59348E0029D7F7 /* Assets.xcassets */; };
 		32E454EA1F59348E0029D7F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32E454E81F59348E0029D7F7 /* LaunchScreen.storyboard */; };
+		32F4281E1F5D6BF600A7111C /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F4281D1F5D6BF600A7111C /* CustomCell.swift */; };
+		32F428251F5D6E6900A7111C /* UIView+FrameAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F428241F5D6E6900A7111C /* UIView+FrameAdjust.m */; };
 		644CFD1E1F5C018900C155E3 /* SinaWeiBoWebviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644CFD1D1F5C018900C155E3 /* SinaWeiBoWebviewController.swift */; };
 		644CFD201F5C1A8D00C155E3 /* ListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644CFD1F1F5C1A8D00C155E3 /* ListsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +32,9 @@
 		32E454E61F59348E0029D7F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32E454E91F59348E0029D7F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32E454EB1F59348E0029D7F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32F4281D1F5D6BF600A7111C /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		32F428231F5D6E6900A7111C /* UIView+FrameAdjust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameAdjust.h"; sourceTree = "<group>"; };
+		32F428241F5D6E6900A7111C /* UIView+FrameAdjust.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameAdjust.m"; sourceTree = "<group>"; };
 		644CFD1D1F5C018900C155E3 /* SinaWeiBoWebviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinaWeiBoWebviewController.swift; sourceTree = "<group>"; };
 		644CFD1F1F5C1A8D00C155E3 /* ListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +76,9 @@
 				32A6638A1F5D4B3700915AC4 /* UserModel.swift */,
 				32B133551F5D58AC00ABEF04 /* UIImageView+Remote.h */,
 				32B133561F5D58AC00ABEF04 /* UIImageView+Remote.m */,
+				32F428231F5D6E6900A7111C /* UIView+FrameAdjust.h */,
+				32F428241F5D6E6900A7111C /* UIView+FrameAdjust.m */,
+				32F4281D1F5D6BF600A7111C /* CustomCell.swift */,
 				32E454E31F59348E0029D7F7 /* Main.storyboard */,
 				32E454E61F59348E0029D7F7 /* Assets.xcassets */,
 				32E454E81F59348E0029D7F7 /* LaunchScreen.storyboard */,
@@ -155,10 +163,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				32E454E21F59348E0029D7F7 /* ViewController.swift in Sources */,
+				32F428251F5D6E6900A7111C /* UIView+FrameAdjust.m in Sources */,
 				32E454E01F59348E0029D7F7 /* AppDelegate.swift in Sources */,
 				644CFD201F5C1A8D00C155E3 /* ListsViewController.swift in Sources */,
 				32A6638B1F5D4B3700915AC4 /* UserModel.swift in Sources */,
 				644CFD1E1F5C018900C155E3 /* SinaWeiBoWebviewController.swift in Sources */,
+				32F4281E1F5D6BF600A7111C /* CustomCell.swift in Sources */,
 				32B133571F5D58AC00ABEF04 /* UIImageView+Remote.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
