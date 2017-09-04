@@ -8,7 +8,13 @@
 
 import UIKit
 
-//#define WIN_SIZE UIScreen.mainScreen.bounds.size
+let appid: String = "2223933453"
+let appsecret: String = "5e512ddeb3f083e496e83ee98f15aad9"
+let callbackuri: String = "http://www.baidu.com"
+
+//let appid: String = "1478592170"
+//let appsecret: String = "f53fb2cb26339ba279d98105664667af"
+//let callbackuri: String = "http://caiyaodemo.com"
 
 class SinaWeiBoWebviewController: UIViewController, UIWebViewDelegate
 {
@@ -21,8 +27,8 @@ class SinaWeiBoWebviewController: UIViewController, UIWebViewDelegate
         
         
         
-        let url = NSURL(string: "https://api.weibo.com/oauth2/authorize?client_id=1478592170&response_type=code&redirect_uri=http://caiyaodemo.com")
-        let request = NSURLRequest(url: url as! URL)
+        let url = URL(string: "https://api.weibo.com/oauth2/authorize?client_id=\(appid)&response_type=code&redirect_uri=\(callbackuri)")
+        let request = URLRequest(url: url!)
         
         let webview = UIWebView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
         webview.delegate = self
@@ -44,8 +50,8 @@ class SinaWeiBoWebviewController: UIViewController, UIWebViewDelegate
             let code = components?[1]
             if let theCode = code
             {
-                let newUrl = "https://api.weibo.com/oauth2/access_token?client_id=1478592170&client_secret=f53fb2cb26339ba279d98105664667af&grant_type=authorization_code&redirect_uri=http://caiyaodemo.com&code=\(theCode)"
-                var newRequest = URLRequest(url: NSURL(string: newUrl) as! URL, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 60)
+                let newUrl = "https://api.weibo.com/oauth2/access_token?client_id=\(appid)&client_secret=\(appsecret)&grant_type=authorization_code&redirect_uri=\(callbackuri)&code=\(theCode)"
+                var newRequest = URLRequest(url: URL(string: newUrl)!, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 60)
                 newRequest.httpMethod = "POST"
                 let session = URLSession(configuration: URLSessionConfiguration.default)
                 let dataTask = session.dataTask(with: newRequest, completionHandler: { (data, response, error) in

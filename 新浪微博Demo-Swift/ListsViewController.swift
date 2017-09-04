@@ -12,13 +12,13 @@ let cellID: String = "cellID"
 
 class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
-    var token: String
+    var token: String? = nil
     {
         didSet
         {
-            let fianlURL = "https://api.weibo.com/2/statuses/public_timeline.json?access_token=\(self.token)"
-            var finalRequest = URLRequest(url: URL(string: fianlURL)!)
-            finalRequest.httpMethod = "POST"
+            let fianlURL = "https://api.weibo.com/2/statuses/public_timeline.json?access_token=\(self.token!)"
+            let finalRequest = URLRequest(url: URL(string: fianlURL)!)
+            //finalRequest.httpMethod = "POST"
             let session = URLSession(configuration: URLSessionConfiguration.default)
             let dataTask = session.dataTask(with: finalRequest) { (data, response, error) in
                 if let theData = data
@@ -30,19 +30,18 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             dataTask.resume()
         }
     }
-    private var tableView: UITableView? = nil
+    private var tableView: UITableView!
     private var records: NSArray? = nil
+
+    init(_ token: String)
+    {
+        self.token = token
+        super.init(nibName: nil, bundle: nil)
+    }
     
     convenience init()
     {
-        self.init(token: token)
-        //self.token = token
-    }
-    
-    init(token: String)
-    {
-        self.token = token
-        super.init(coder: aDecoder)
+        self.init("")
     }
     
     required init?(coder aDecoder: NSCoder)
@@ -57,10 +56,10 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         // Do any additional setup after loading the view.
         tableView = UITableView(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:UIScreen.main.bounds.size.height), style: .plain)
-        tableView!.delegate = self
-        tableView!.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         
-        self.view .addSubview(tableView!)
+        self.view .addSubview(tableView)
     }
 
     override func didReceiveMemoryWarning()
@@ -93,15 +92,4 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         return cell!
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
