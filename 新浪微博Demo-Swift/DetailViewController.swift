@@ -14,7 +14,7 @@ class DetailViewController: UIViewController
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var nickName: UILabel!
     @IBOutlet weak var comments: UILabel!
-    @IBOutlet weak var geo: UILabel!
+    @IBOutlet weak var location: UILabel!
     
     var userInfo: UserModel? = nil
     
@@ -27,7 +27,7 @@ class DetailViewController: UIViewController
         textView.text = userInfo?.title
         nickName.text = userInfo?.nickName
         comments.text = userInfo?.followers_count
-        geo.text = userInfo?.geo
+        location.text = userInfo?.location!
     }
     
     init(userInfo: UserModel?)

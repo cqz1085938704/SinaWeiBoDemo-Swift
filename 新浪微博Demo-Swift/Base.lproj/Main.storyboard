@@ -100,12 +100,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Avh-Jk-h6n">
-                                <rect key="frame" x="16" y="220" width="343" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJq-iG-DDX">
                                 <rect key="frame" x="16" y="261" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -119,6 +113,12 @@
                                     <constraint firstAttribute="height" constant="109" id="dEs-FY-pq6"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Avh-Jk-h6n">
+                                <rect key="frame" x="16" y="220" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -140,8 +140,8 @@
                     </view>
                     <connections>
                         <outlet property="comments" destination="bJq-iG-DDX" id="cHd-mS-CBN"/>
-                        <outlet property="geo" destination="Avh-Jk-h6n" id="iD2-6g-5TB"/>
                         <outlet property="imageView" destination="FNX-U2-wt3" id="LSV-f2-bRB"/>
+                        <outlet property="location" destination="Avh-Jk-h6n" id="LJQ-AX-Dab"/>
                         <outlet property="nickName" destination="haj-tc-U4B" id="W1e-mN-14M"/>
                         <outlet property="textView" destination="jE4-DI-4Gs" id="tDe-zB-0Ww"/>
                     </connections>

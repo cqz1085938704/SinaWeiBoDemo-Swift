@@ -14,7 +14,7 @@ class UserModel: NSObject
     var title: String? = nil
     var nickName: String? = nil
     var picUrls: NSArray? = nil
-    var geo: String? = nil
+    var location: String? = nil
     var followers_count:String? = nil
     
     init?(_ infoDic: NSDictionary)
@@ -27,7 +27,7 @@ class UserModel: NSObject
         title = infoDic["text"] as? String
         nickName = user?["name"] as? String
         picUrls = infoDic["pic_urls"] as? NSArray
-        geo = infoDic["geo"] as? String ?? "无定位信息"
+        location = user?["location"] as? String
         followers_count = "\(String(describing: user?["followers_count"]))"
     }
     
