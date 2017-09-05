@@ -112,7 +112,7 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var cell: CustomCell? = tableView.dequeueReusableCell(withIdentifier: cellID) as? CustomCell
         if cell == nil
         {
-            cell = CustomCell(style: .default, reuseIdentifier: cellID)
+            cell = CustomCell(style: .subtitle, reuseIdentifier: cellID)
         }
         
         let model = self.records?[indexPath.row] as? UserModel
@@ -123,5 +123,12 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 80
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let detailVC = DetailViewController()
+        detailVC.userInfo = self.records?[indexPath.row] as? UserModel
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }

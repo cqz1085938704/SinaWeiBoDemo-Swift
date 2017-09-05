@@ -14,7 +14,9 @@ class CustomCell: UITableViewCell
     {
         didSet
         {
-            textLabel?.text = userModel?.title
+            textLabel?.text = userModel?.nickName
+            detailTextLabel?.text = userModel?.title
+            detailTextLabel?.numberOfLines = 2
             imageView?.setImageWithURL(userModel?.imageURL, placeHolder: "placeholder")
         }
     }
@@ -38,7 +40,8 @@ class CustomCell: UITableViewCell
         super.layoutSubviews()
         
         imageView?.frame = CGRect(x: 10, y: 10, width: 60, height: 60)
-        textLabel?.frame = CGRect(x: (imageView?.right())! + 5.0, y: 10.0, width: self.width() - (imageView?.right())! - 5.0 - 10.0, height: 60.0)
+        textLabel?.frame = CGRect(x: (imageView?.right())! + 5.0, y: 10.0, width: self.width() - (imageView?.right())! - 5.0 - 10.0, height: 30.0)
+        detailTextLabel?.setX((textLabel?.x())!)
     }
     
     override func awakeFromNib()
