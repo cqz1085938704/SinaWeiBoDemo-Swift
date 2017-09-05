@@ -53,8 +53,6 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let theLoading = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
         theLoading.hidesWhenStopped = true
         theLoading.startAnimating()
-        theLoading.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
-        theLoading.center = self.view.center
         return theLoading
     }()
     
@@ -89,6 +87,14 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillLayoutSubviews()
+    {
+        super.viewWillLayoutSubviews()
+        
+        loadingView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        loadingView.center = self.view.center
     }
     
     func numberOfSections(in tableView: UITableView) -> Int

@@ -19,8 +19,6 @@ class SinaWeiBoWebviewController: UIViewController, UIWebViewDelegate
     {
        var theLoading = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
         theLoading.hidesWhenStopped = true
-        theLoading.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
-        theLoading.center = self.view.center
         return theLoading
     }()
     
@@ -42,6 +40,14 @@ class SinaWeiBoWebviewController: UIViewController, UIWebViewDelegate
         startLoading()
     }
 
+    override func viewWillLayoutSubviews()
+    {
+        super.viewWillLayoutSubviews()
+        
+        loadingView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        loadingView.center = self.view.center
+    }
+    
     func startLoading()
     {
         let url = URL(string: codeURL)
