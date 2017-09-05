@@ -17,22 +17,17 @@ class DetailViewController: UIViewController
     @IBOutlet weak var geo: UILabel!
     
     var userInfo: UserModel? = nil
-    {
-        didSet
-        {
-            imageView.setImageWithURL(userInfo?.imageURL, placeHolder: "placeholder")
-            textView.text = userInfo?.title
-            nickName.text = userInfo?.nickName
-            comments.text = userInfo?.followers_count
-            geo.text = userInfo?.geo
-        }
-    }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
         title = userInfo?.nickName
+        imageView.setImageWithURL(userInfo?.imageURL, placeHolder: "placeholder")
+        textView.text = userInfo?.title
+        nickName.text = userInfo?.nickName
+        comments.text = userInfo?.followers_count
+        geo.text = userInfo?.geo
     }
     
     init(userInfo: UserModel?)

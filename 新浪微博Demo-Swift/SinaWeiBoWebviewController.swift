@@ -28,6 +28,7 @@ class SinaWeiBoWebviewController: UIViewController, UIWebViewDelegate
     {
         let theWeb = UIWebView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
         theWeb.delegate = self
+        theWeb.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return theWeb
     }()
     

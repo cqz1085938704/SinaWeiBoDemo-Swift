@@ -47,6 +47,7 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let theTable = UITableView(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:UIScreen.main.bounds.size.height), style: .plain)
         theTable.delegate = self
         theTable.dataSource = self
+        theTable.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return theTable
     }()
     
