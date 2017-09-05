@@ -91,7 +91,7 @@ static NSString *const imageFloder = @"QDIINewsIcons";
     return imageName;
 }
 
--(void)setImageWithURL:(NSString *)urlString placeHolder:(NSString *)placeHolder completion:(Completion)completion
+-(void)setImageWithURL:(NSString *)urlString placeHolder:(NSString *)placeHolder
 {
     [self.dataTask cancel];
     [self.session invalidateAndCancel];
@@ -122,10 +122,6 @@ static NSString *const imageFloder = @"QDIINewsIcons";
             dispatch_async(dispatch_get_main_queue(), ^{
                 strongSelf.image = image;
             });
-        }
-        if (completion)
-        {
-            completion();
         }
     }];
     [self.dataTask resume];

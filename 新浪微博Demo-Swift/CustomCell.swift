@@ -15,9 +15,7 @@ class CustomCell: UITableViewCell
         didSet
         {
             textLabel?.text = userModel?.title
-            imageView?.setImageWithURL(userModel?.imageURL, placeHolder: "placeholder", completion: {[unowned self] in
-                self.setNeedsLayout()
-            })
+            imageView?.setImageWithURL(userModel?.imageURL, placeHolder: "placeholder")
         }
     }
     
@@ -26,6 +24,8 @@ class CustomCell: UITableViewCell
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         textLabel?.numberOfLines = 0
+        imageView?.contentMode = .scaleAspectFit
+        imageView?.image = UIImage(named: "placeholder")
     }
     
     required init?(coder aDecoder: NSCoder)
