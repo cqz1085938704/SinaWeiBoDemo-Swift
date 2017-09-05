@@ -114,7 +114,7 @@ static NSString *const imageFloder = @"QDIINewsIcons";
     __weak typeof(self) weakSelf = self;
     self.session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     self.dataTask = [self.session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        __weak typeof(self) strongSelf = weakSelf;
+        __strong typeof(self) strongSelf = weakSelf;
         if (!error)
         {
             [strongSelf saveImage:data ToPath:[strongSelf pathOfImage:imageName]];
