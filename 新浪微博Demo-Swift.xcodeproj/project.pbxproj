@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		325FCAB31F5E5793008E5D79 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325FCAB21F5E5793008E5D79 /* DetailViewController.swift */; };
+		325FCAB51F5E761C008E5D79 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325FCAB41F5E761C008E5D79 /* HttpRequest.swift */; };
 		32A6638B1F5D4B3700915AC4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6638A1F5D4B3700915AC4 /* UserModel.swift */; };
 		32B133571F5D58AC00ABEF04 /* UIImageView+Remote.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B133561F5D58AC00ABEF04 /* UIImageView+Remote.m */; };
 		32E454E01F59348E0029D7F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E454DF1F59348E0029D7F7 /* AppDelegate.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		325FCAB21F5E5793008E5D79 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		325FCAB41F5E761C008E5D79 /* HttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
 		32A6638A1F5D4B3700915AC4 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		32B133541F5D58AB00ABEF04 /* 新浪微博Demo-Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "新浪微博Demo-Swift-Bridging-Header.h"; sourceTree = "<group>"; };
 		32B133551F5D58AC00ABEF04 /* UIImageView+Remote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Remote.h"; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				644CFD1F1F5C1A8D00C155E3 /* ListsViewController.swift */,
 				325FCAB21F5E5793008E5D79 /* DetailViewController.swift */,
 				32A6638A1F5D4B3700915AC4 /* UserModel.swift */,
+				325FCAB41F5E761C008E5D79 /* HttpRequest.swift */,
 				32B133551F5D58AC00ABEF04 /* UIImageView+Remote.h */,
 				32B133561F5D58AC00ABEF04 /* UIImageView+Remote.m */,
 				32F428231F5D6E6900A7111C /* UIView+FrameAdjust.h */,
@@ -170,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				325FCAB31F5E5793008E5D79 /* DetailViewController.swift in Sources */,
+				325FCAB51F5E761C008E5D79 /* HttpRequest.swift in Sources */,
 				32E454E21F59348E0029D7F7 /* ViewController.swift in Sources */,
 				32F428251F5D6E6900A7111C /* UIView+FrameAdjust.m in Sources */,
 				32E454E01F59348E0029D7F7 /* AppDelegate.swift in Sources */,

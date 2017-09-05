@@ -75,10 +75,7 @@ class SinaWeiBoWebviewController: UIViewController, UIWebViewDelegate
             if let theCode = code
             {
                 let newUrl = "https://api.weibo.com/oauth2/access_token?client_id=\(appid)&client_secret=\(appsecret)&grant_type=authorization_code&redirect_uri=\(callbackuri)&code=\(theCode)"
-                var newRequest = URLRequest(url: URL(string: newUrl)!, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 60)
-                newRequest.httpMethod = "POST"
-                let session = URLSession(configuration: URLSessionConfiguration.default)
-                let dataTask = session.dataTask(with: newRequest, completionHandler: { (data, response, error) in
+                HttpRequest.post(url: newUrl, completionHandler: {[unowned self] (data, response, error) in
                     if let theData = data
                     {
                         let result = try! JSONSerialization.jsonObject(with: theData, options: .mutableContainers) as! NSDictionary
@@ -92,7 +89,6 @@ class SinaWeiBoWebviewController: UIViewController, UIWebViewDelegate
                         }
                     }
                 })
-                dataTask.resume()
             }
         }
         return true
