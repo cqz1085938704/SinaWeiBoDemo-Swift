@@ -84,7 +84,7 @@ class SinaWeiBoWebviewController: UIViewController, UIWebViewDelegate
                         let viewCOntroller = ListsViewController()
                         viewCOntroller.token = access_token
                         
-                        DispatchQueue.main.async {
+                        DispatchQueue.main.async {[unowned self] in
                             self.navigationController?.pushViewController(viewCOntroller, animated: true)
                         }
                     }
