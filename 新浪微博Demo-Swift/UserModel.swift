@@ -15,7 +15,7 @@ class UserModel: NSObject
     var nickName: String? = nil
     var picUrls: NSArray? = nil
     var geo: String? = nil
-    var followers_count:Int? = 0
+    var followers_count:String? = nil
     
     init?(_ infoDic: NSDictionary)
     {
@@ -28,7 +28,7 @@ class UserModel: NSObject
         nickName = user?["name"] as? String
         picUrls = infoDic["pic_urls"] as? NSArray
         geo = infoDic["geo"] as? String ?? "无定位信息"
-        followers_count = user?["followers_count"] as? Int
+        followers_count = "\(String(describing: user?["followers_count"]))"
     }
     
     class func getAllUserModels(_ users: NSArray) -> NSArray

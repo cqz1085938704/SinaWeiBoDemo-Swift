@@ -127,7 +127,7 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        let detailVC = DetailViewController()
+        let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         detailVC.userInfo = self.records?[indexPath.row] as? UserModel
         navigationController?.pushViewController(detailVC, animated: true)
     }
