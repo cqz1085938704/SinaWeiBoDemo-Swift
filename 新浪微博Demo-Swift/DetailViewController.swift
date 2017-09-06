@@ -46,7 +46,7 @@ class DetailViewController: UIViewController
                 let index = theUrls.index(of: imageUrl)
                 
                 let imageView = UIImageView(frame: CGRect(x: CGFloat(index%columns) * wh, y: comments.y() + comments.height() + CGFloat(index/columns) * wh, width: wh, height: wh))
-                imageView.setImageWithURL(thumbnail_pic as! String, placeHolder: "placeHolder")
+                imageView.setImageWithURL(thumbnail_pic as! String, placeHolder: "placeholder")
                 imageView.contentMode = .scaleAspectFit
                 view.addSubview(imageView)
             }
