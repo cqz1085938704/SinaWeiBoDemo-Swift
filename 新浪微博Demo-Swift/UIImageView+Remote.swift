@@ -61,7 +61,16 @@ extension UIImageView
         {
             try? fileManager.createDirectory(atPath: path, withIntermediateDirectories: true)
         }
-        return String(format: "%s/%s", path, name)
+        path = path.appending("/\(name)")
+        return path
+    }
+    
+    private func generateImageName(url: String) -> String
+    {
+        var imageName = url.replacingOccurrences(of: "/", with: "")
+        imageName = imageName.replacingOccurrences(of: "//", with: "")
+        imageName = imageName.replacingOccurrences(of: ":", with: "")
+        return imageName
     }
     
     private func saveImage(data: Data, toPath path: String) -> Bool
@@ -74,7 +83,7 @@ extension UIImageView
         dataTask?.cancel()
         session?.invalidateAndCancel()
         
-        let imageName = url
+        let imageName = generateImageName(url: url)
         if imageExists(name: imageName)
         {
             DispatchQueue.global().async {
