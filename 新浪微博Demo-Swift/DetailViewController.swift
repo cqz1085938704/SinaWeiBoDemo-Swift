@@ -8,6 +8,8 @@
 
 import UIKit
 
+let columns: Int = 6
+
 class DetailViewController: UIViewController
 {
     @IBOutlet weak var imageView: UIImageView!
@@ -28,6 +30,27 @@ class DetailViewController: UIViewController
         nickName.text = userInfo?.nickName
         comments.text = userInfo?.followers_count
         location.text = userInfo?.location!
+        
+        loadPics()
+    }
+    
+    func loadPics()
+    {
+        if let theUrls = userInfo?.picUrls
+        {
+            for imageUrl in theUrls
+            {
+                let thumbnail_pic = (imageUrl as? NSDictionary)?["thumbnail_pic"]
+                
+                let wh = UIScreen.main.bounds.size.width/CGFloat(columns)
+                let index = theUrls.index(of: imageUrl)
+                
+                let imageView = UIImageView(frame: CGRect(x: CGFloat(index%columns) * wh, y: comments.y() + comments.height() + CGFloat(index/columns) * wh, width: wh, height: wh))
+                imageView.setImageWithURL(thumbnail_pic as! String, placeHolder: "placeHolder")
+                imageView.contentMode = .scaleAspectFit
+                view.addSubview(imageView)
+            }
+        }
     }
     
     init(userInfo: UserModel?)
