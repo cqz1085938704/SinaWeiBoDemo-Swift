@@ -16,7 +16,7 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     {
         didSet
         {
-            let fianlURL = "https://api.weibo.com/2/statuses/public_timeline.json?access_token=\(self.token!)"
+            let fianlURL = "https://api.weibo.com/2/statuses/public_timeline.json?access_token=\(self.token!)&count=50"
             HttpRequest.get(url: fianlURL) {[unowned self] (data, response, error) in
                 if let theData = data
                 {

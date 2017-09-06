@@ -28,7 +28,7 @@ class UserModel: NSObject
         nickName = user?["name"] as? String
         picUrls = infoDic["pic_urls"] as? NSArray
         location = user?["location"] as? String
-        followers_count = "\(String(describing: user?["followers_count"]))"
+        followers_count = (user?["followers_count"] as? Int)?.description
     }
     
     class func getAllUserModels(_ users: NSArray) -> NSArray

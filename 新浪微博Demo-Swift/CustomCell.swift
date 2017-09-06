@@ -16,7 +16,6 @@ class CustomCell: UITableViewCell
         {
             textLabel?.text = userModel?.nickName
             detailTextLabel?.text = userModel?.title
-            detailTextLabel?.numberOfLines = 2
             imageView?.setImageWithURL(userModel?.imageURL, placeHolder: "placeholder")
         }
     }
@@ -25,7 +24,8 @@ class CustomCell: UITableViewCell
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        textLabel?.numberOfLines = 0
+        textLabel?.numberOfLines = 1
+        detailTextLabel?.numberOfLines = 2
         imageView?.contentMode = .scaleAspectFit
         imageView?.image = UIImage(named: "placeholder")
     }
