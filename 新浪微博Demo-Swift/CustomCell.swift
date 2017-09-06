@@ -16,7 +16,7 @@ class CustomCell: UITableViewCell
         {
             textLabel?.text = userModel?.nickName
             detailTextLabel?.text = userModel?.title
-            imageView?.setImageWithURL(userModel?.imageURL, placeHolder: "placeholder")
+            imageView?.setImage(url: userModel?.imageURL, placeHolder: "placeholder")
         }
     }
     
