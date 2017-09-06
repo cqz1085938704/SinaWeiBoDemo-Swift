@@ -25,7 +25,10 @@ class DetailViewController: UIViewController
         super.viewDidLoad()
         
         title = userInfo?.nickName
-        imageView.setImage(url: userInfo?.imageURL, placeHolder: "placeholder")
+        if let theUrl = userInfo?.imageURL
+        {
+            imageView.setImage(url: theUrl, placeHolder: "placeholder")
+        }
         textView.text = userInfo?.title
         nickName.text = userInfo?.nickName
         comments.text = userInfo?.followers_count
@@ -46,8 +49,11 @@ class DetailViewController: UIViewController
                 let index = theUrls.index(of: imageUrl)
                 
                 let aImageView = UIImageView(frame: CGRect(x: CGFloat(index%columns) * wh, y: comments.bottom() + CGFloat(index/columns) * wh, width: wh, height: wh))
-                aImageView.setImage(url: thumbnail_pic as? String, placeHolder: "placeholder")
                 aImageView.contentMode = .scaleAspectFit
+                if let theUrl = thumbnail_pic as? String
+                {
+                    aImageView.setImage(url: theUrl, placeHolder: "placeholder")
+                }
                 view.addSubview(aImageView)
             }
         }

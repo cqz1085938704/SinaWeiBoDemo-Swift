@@ -20,13 +20,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;Demo-Swift/DetailViewController.swift"
-            timestampString = "526363635.200955"
+            timestampString = "526380927.303375"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "init(userInfo:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;Demo_Swift.DetailViewController.init (Swift.Optional&lt;&#x65b0;&#x6d6a;&#x5fae;&#x535a;Demo_Swift.UserModel&gt;) -&gt; &#x65b0;&#x6d6a;&#x5fae;&#x535a;Demo_Swift.DetailViewController"
+                  moduleName = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;Demo-Swift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/core/Documents/Henry/My%20Projects/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9ADemo-Swift/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9ADemo-Swift/DetailViewController.swift"
+                  timestampString = "526380927.727992"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;Demo_Swift.DetailViewController.__allocating_init (Swift.Optional&lt;&#x65b0;&#x6d6a;&#x5fae;&#x535a;Demo_Swift.UserModel&gt;) -&gt; &#x65b0;&#x6d6a;&#x5fae;&#x535a;Demo_Swift.DetailViewController"
+                  moduleName = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;Demo-Swift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/core/Documents/Henry/My%20Projects/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9ADemo-Swift/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9ADemo-Swift/DetailViewController.swift"
+                  timestampString = "526380927.729445"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -36,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;Demo-Swift/DetailViewController.swift"
-            timestampString = "526363635.200955"
+            timestampString = "526380927.303375"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "init(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -100,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;Demo-Swift/DetailViewController.swift"
-            timestampString = "526364389.165546"
+            timestampString = "526380927.303375"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "loadPics()"
             landmarkType = "7">
          </BreakpointContent>
