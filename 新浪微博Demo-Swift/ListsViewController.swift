@@ -97,6 +97,8 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         loadingView.center = self.view.center
     }
     
+    //MARK: UITableViewDelegate & UITableViewDataSource
+    
     func numberOfSections(in tableView: UITableView) -> Int
     {
         return 1

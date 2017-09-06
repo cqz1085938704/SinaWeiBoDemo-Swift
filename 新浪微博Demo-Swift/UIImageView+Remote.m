@@ -96,13 +96,16 @@ static NSString *const imageFloder = @"QDIINewsIcons";
     [self.dataTask cancel];
     [self.session invalidateAndCancel];
     
+    __weak typeof(self) weakSelf = self;
+    
     NSString *imageName = [self generateImageName:urlString];
     if ([self imageExists:imageName])
     {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            UIImage *cachedImage = [[UIImage alloc] initWithContentsOfFile:[self pathOfImage:imageName]];
+            __strong typeof(self) strongSelf = weakSelf;
+            UIImage *cachedImage = [[UIImage alloc] initWithContentsOfFile:[strongSelf pathOfImage:imageName]];
             dispatch_async(dispatch_get_main_queue(), ^{
-                self.image = cachedImage;
+                strongSelf.image = cachedImage;
             });
         });
     }
@@ -111,7 +114,6 @@ static NSString *const imageFloder = @"QDIINewsIcons";
         self.image = [UIImage imageNamed:placeHolder];
     }
     
-    __weak typeof(self) weakSelf = self;
     self.session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     self.dataTask = [self.session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         __strong typeof(self) strongSelf = weakSelf;
