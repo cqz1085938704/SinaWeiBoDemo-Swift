@@ -30,10 +30,12 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                             self.records = models
                             DispatchQueue.main.async {[unowned self] in
                                 self.tableView.reloadData()
-                                self.loadingView.stopAnimating()
                             }
                         }
                     }
+                }
+                DispatchQueue.main.async {[unowned self] in
+                    self.loadingView.stopAnimating()
                 }
             }
         }
