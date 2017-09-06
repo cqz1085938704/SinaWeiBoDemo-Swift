@@ -18,6 +18,20 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         {
             let fianlURL = "https://api.weibo.com/2/statuses/public_timeline.json?access_token=\(self.token!)&count=50"
             HttpRequest.get(url: fianlURL) {[unowned self] (data, response, error) in
+                let json = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                if let theJson = json
+                {
+                    print("json: \(theJson)")
+                }
+                if let theRes = response
+                {
+                    print("response: \(theRes)")
+                }
+                if let theError = error
+                {
+                    print("error: \(theError)")
+                }
+                
                 if let theData = data
                 {
                     let dic = try? JSONSerialization.jsonObject(with: theData, options: .mutableContainers) as? NSDictionary
