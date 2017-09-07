@@ -10,10 +10,23 @@ import UIKit
 
 let kSession = "session"
 let kDataTask = "dataTask"
-let cachedImagesFolder = "cachedImages"
+let kCachedImages = "cachedImages"
 
 extension UIImageView
 {
+    var cachedImages: NSMutableDictionary?
+    {
+        set
+        {
+            objc_setAssociatedObject(self, kCachedImages, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        
+        get
+        {
+            return objc_getAssociatedObject(self, kCachedImages) as? NSMutableDictionary
+        }
+    }
+    
     private var session: URLSession?
     {
         set
@@ -55,7 +68,7 @@ extension UIImageView
     private func pathOfImage(name: String) -> String
     {
         var path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0]
-        path = path.appending("/\(cachedImagesFolder)")
+        path = path.appending("/\(kCachedImages)")
         let fileManager = FileManager.default
         if !fileManager.fileExists(atPath: path)
         {
@@ -83,12 +96,26 @@ extension UIImageView
         dataTask?.cancel()
         session?.invalidateAndCancel()
         
+        if cachedImages == nil
+        {
+            cachedImages = NSMutableDictionary()
+        }
+        print(cachedImages ?? "cachedImages is empty")
+        
         let imageName = generateImageName(url: url)
-        if imageExists(name: imageName)
+        if let theImage = cachedImages?[imageName] as? UIImage
+        {
+            image = theImage
+        }
+        else if imageExists(name: imageName)
         {
             DispatchQueue.global().async {[unowned self] in
                 let imagePath = self.pathOfImage(name: imageName)
                 let cachedImage = UIImage(contentsOfFile: imagePath)
+                if let theImage = cachedImage
+                {
+                    self.cachedImages?.setObject(theImage, forKey: imageName as NSString)
+                }
                 DispatchQueue.main.async {[unowned self] in
                     self.image = cachedImage
                 }
@@ -110,6 +137,10 @@ extension UIImageView
                 {
                     let _ = self.saveImage(data: theData, toPath: self.pathOfImage(name: imageName))
                     let image = UIImage(data: theData)
+                    if let theImage = image
+                    {
+                        self.cachedImages?.setObject(theImage, forKey: imageName as NSString)
+                    }
                     DispatchQueue.main.async {[unowned self] in
                         self.image = image
                     }
