@@ -86,10 +86,10 @@ extension UIImageView
         let imageName = generateImageName(url: url)
         if imageExists(name: imageName)
         {
-            DispatchQueue.global().async {
+            DispatchQueue.global().async {[unowned self] in
                 let imagePath = self.pathOfImage(name: imageName)
                 let cachedImage = UIImage(contentsOfFile: imagePath)
-                DispatchQueue.main.async {
+                DispatchQueue.main.async {[unowned self] in
                     self.image = cachedImage
                 }
             }
@@ -103,12 +103,12 @@ extension UIImageView
         }
         
         session = URLSession(configuration: URLSessionConfiguration.default)
-        dataTask = session?.dataTask(with: URL(string: url)!, completionHandler: { (data, response, error) in
+        dataTask = session?.dataTask(with: URL(string: url)!, completionHandler: {[unowned self] (data, response, error) in
             if (response as! HTTPURLResponse).statusCode == 200 && data != nil
             {
                 let _ = self.saveImage(data: data!, toPath: self.pathOfImage(name: imageName))
                 let image = UIImage(data: data!)
-                DispatchQueue.main.async {
+                DispatchQueue.main.async {[unowned self] in
                     self.image = image
                 }
             }
