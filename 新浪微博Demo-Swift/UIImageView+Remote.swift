@@ -104,12 +104,15 @@ extension UIImageView
         
         session = URLSession(configuration: URLSessionConfiguration.default)
         dataTask = session?.dataTask(with: URL(string: url)!, completionHandler: {[unowned self] (data, response, error) in
-            if (response as! HTTPURLResponse).statusCode == 200 && data != nil
+            if let theRes = response, let theData = data
             {
-                let _ = self.saveImage(data: data!, toPath: self.pathOfImage(name: imageName))
-                let image = UIImage(data: data!)
-                DispatchQueue.main.async {[unowned self] in
-                    self.image = image
+                if (theRes as? HTTPURLResponse)?.statusCode == 200
+                {
+                    let _ = self.saveImage(data: theData, toPath: self.pathOfImage(name: imageName))
+                    let image = UIImage(data: theData)
+                    DispatchQueue.main.async {[unowned self] in
+                        self.image = image
+                    }
                 }
             }
         })
