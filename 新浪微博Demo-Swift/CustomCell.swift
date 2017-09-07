@@ -44,8 +44,8 @@ class CustomCell: UITableViewCell
         super.layoutSubviews()
         
         imageView?.frame = CGRect(x: 10, y: 10, width: 60, height: 60)
-        textLabel?.frame = CGRect(x: (imageView?.right())! + 5.0, y: 10.0, width: self.width() - (imageView?.right())! - 5.0 - 10.0, height: 30.0)
-        detailTextLabel?.setX((textLabel?.x())!)
+        textLabel?.frame = CGRect(x: (imageView?.right())! + 10, y: 5, width: self.width() - (imageView?.right())! - 5.0 - 10.0, height: 30.0)
+        detailTextLabel?.frame = CGRect(x: (textLabel?.x())!, y: (textLabel?.bottom())!, width: (textLabel?.width())!, height: 40)
     }
     
     override func awakeFromNib()
