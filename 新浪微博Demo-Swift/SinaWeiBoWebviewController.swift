@@ -61,6 +61,8 @@ class SinaWeiBoWebviewController: UIViewController, UIWebViewDelegate
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: UIWebViewDelegate
+    
     func webViewDidStartLoad(_ webView: UIWebView)
     {
         self.loadingView.startAnimating()
@@ -86,10 +88,7 @@ class SinaWeiBoWebviewController: UIViewController, UIWebViewDelegate
                     {
                         let result = try! JSONSerialization.jsonObject(with: theData, options: .mutableContainers) as! NSDictionary
                         let access_token = result["access_token"] as? String
-                        
-                        let viewCOntroller = ListsViewController()
-                        viewCOntroller.token = access_token
-                        
+                        let viewCOntroller = ListsViewController(token: access_token)
                         DispatchQueue.main.async {[unowned self] in
                             self.navigationController?.pushViewController(viewCOntroller, animated: true)
                         }

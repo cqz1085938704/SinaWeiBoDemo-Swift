@@ -13,10 +13,57 @@ let cellID: String = "cellID"
 class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     var token: String? = nil
+    
+    private lazy var tableView: UITableView =
     {
-        didSet
+        let theTable = UITableView(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:UIScreen.main.bounds.size.height), style: .plain)
+        theTable.delegate = self
+        theTable.dataSource = self
+        theTable.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        return theTable
+    }()
+    
+    private lazy var loadingView: UIActivityIndicatorView =
+    {
+        let theLoading = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        theLoading.hidesWhenStopped = true
+        theLoading.startAnimating()
+        return theLoading
+    }()
+    
+    private var records: NSArray? = nil
+
+    init(_ token: String?)
+    {
+        self.token = token
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    convenience init(token: String?)
+    {
+        self.init(token)
+    }
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+    }
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+
+        self.view.addSubview(self.tableView)
+        self.view.addSubview(self.loadingView)
+        
+        startLoading()
+    }
+
+    private func startLoading()
+    {
+        if let theToken = self.token
         {
-            let fianlURL = "https://api.weibo.com/2/statuses/public_timeline.json?access_token=\(self.token!)&count=50"
+            let fianlURL = "https://api.weibo.com/2/statuses/public_timeline.json?access_token=\(theToken)&count=50"
             HttpRequest.get(url: fianlURL) {[unowned self] (data, response, error) in
                 if let theData = data
                 {
@@ -41,50 +88,6 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    private lazy var tableView: UITableView =
-    {
-        let theTable = UITableView(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:UIScreen.main.bounds.size.height), style: .plain)
-        theTable.delegate = self
-        theTable.dataSource = self
-        theTable.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        return theTable
-    }()
-    
-    private lazy var loadingView: UIActivityIndicatorView =
-    {
-        let theLoading = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-        theLoading.hidesWhenStopped = true
-        theLoading.startAnimating()
-        return theLoading
-    }()
-    
-    private var records: NSArray? = nil
-
-    init(_ token: String)
-    {
-        self.token = token
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    convenience init()
-    {
-        self.init("")
-    }
-    
-    required init?(coder aDecoder: NSCoder)
-    {
-        self.token = ""
-        super.init(coder: aDecoder)
-    }
-    
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-
-        self.view.addSubview(self.tableView)
-        self.view.addSubview(self.loadingView)
-    }
-
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
