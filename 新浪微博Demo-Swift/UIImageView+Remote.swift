@@ -14,7 +14,7 @@ let kCachedImages = "cachedImages"
 
 extension UIImageView
 {
-    var cachedImages: NSMutableDictionary?
+    var cachedImages: Dictionary<String, UIImage>?
     {
         set
         {
@@ -23,7 +23,7 @@ extension UIImageView
         
         get
         {
-            return objc_getAssociatedObject(self, kCachedImages) as? NSMutableDictionary
+            return objc_getAssociatedObject(self, kCachedImages) as? Dictionary
         }
     }
     
@@ -96,14 +96,15 @@ extension UIImageView
         dataTask?.cancel()
         session?.invalidateAndCancel()
         
-        if cachedImages == nil
+        if self.cachedImages == nil
         {
-            cachedImages = NSMutableDictionary()
+            self.cachedImages = Dictionary()
         }
-        print(cachedImages ?? "cachedImages is empty")
+        //self.cachedImages?["srg"] = UIImage(named: "placeholder")
+        print(self.cachedImages ?? "cachedImages is empty")
         
         let imageName = generateImageName(url: url)
-        if let theImage = cachedImages?[imageName] as? UIImage
+        if let theImage = self.cachedImages?[imageName]
         {
             image = theImage
         }
@@ -114,7 +115,7 @@ extension UIImageView
                 let cachedImage = UIImage(contentsOfFile: imagePath)
                 if let theImage = cachedImage
                 {
-                    self.cachedImages?.setObject(theImage, forKey: imageName as NSString)
+                    self.cachedImages?[imageName] = theImage
                 }
                 DispatchQueue.main.async {[unowned self] in
                     self.image = cachedImage
@@ -139,7 +140,7 @@ extension UIImageView
                     let image = UIImage(data: theData)
                     if let theImage = image
                     {
-                        self.cachedImages?.setObject(theImage, forKey: imageName as NSString)
+                        self.cachedImages?[imageName] = theImage
                     }
                     DispatchQueue.main.async {[unowned self] in
                         self.image = image
