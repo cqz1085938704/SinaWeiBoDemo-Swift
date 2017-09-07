@@ -32,7 +32,7 @@ class DetailViewController: UIViewController
         textView.text = userInfo?.title
         nickName.text = userInfo?.nickName
         comments.text = userInfo?.followers_count
-        location.text = userInfo?.location!
+        location.text = userInfo?.location
         
         loadPics()
     }
