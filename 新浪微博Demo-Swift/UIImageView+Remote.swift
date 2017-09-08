@@ -14,19 +14,6 @@ let kCachedImages = "cachedImages"
 
 extension UIImageView
 {
-    var cachedImages: Dictionary<String, UIImage>?
-    {
-        set
-        {
-            objc_setAssociatedObject(self, kCachedImages, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
-        
-        get
-        {
-            return objc_getAssociatedObject(self, kCachedImages) as? Dictionary
-        }
-    }
-    
     private var session: URLSession?
     {
         set
@@ -96,27 +83,12 @@ extension UIImageView
         dataTask?.cancel()
         session?.invalidateAndCancel()
         
-        if self.cachedImages == nil
-        {
-            self.cachedImages = Dictionary()
-        }
-        //self.cachedImages?["srg"] = UIImage(named: "placeholder")
-        print(self.cachedImages ?? "cachedImages is empty")
-        
         let imageName = generateImageName(url: url)
-        if let theImage = self.cachedImages?[imageName]
-        {
-            image = theImage
-        }
-        else if imageExists(name: imageName)
+        if imageExists(name: imageName)
         {
             DispatchQueue.global().async {[unowned self] in
                 let imagePath = self.pathOfImage(name: imageName)
                 let cachedImage = UIImage(contentsOfFile: imagePath)
-                if let theImage = cachedImage
-                {
-                    self.cachedImages?[imageName] = theImage
-                }
                 DispatchQueue.main.async {[unowned self] in
                     self.image = cachedImage
                 }
@@ -138,10 +110,6 @@ extension UIImageView
                 {
                     let _ = self.saveImage(data: theData, toPath: self.pathOfImage(name: imageName))
                     let image = UIImage(data: theData)
-                    if let theImage = image
-                    {
-                        self.cachedImages?[imageName] = theImage
-                    }
                     DispatchQueue.main.async {[unowned self] in
                         self.image = image
                     }
